@@ -1,51 +1,55 @@
-# Omo Modpack — release preparation
+# Omo Modpack — Public Core
 
-A separate, versioned client pack for Omo Space, for import into Prism Launcher.
-This candidate is not yet a public release. No binary ZIP is approved for distribution.
+A version-pinned client pack for Prism Launcher, using public Omo Space and official upstream downloads.
 
-## What is being prepared
+**Status: unpublished release candidate.** `0.1.0-rc.1` imports and launches on Linux but **cannot join Omo World at `play.omo.sh`**. The server rejects two unknown registry entries in the missing `fruitfly` namespace. Do not advertise this candidate as a working server-join pack.
 
-- A new Prism instance, rather than changes to an existing installation.
-- A pinned Minecraft/Fabric mod set with SHA-256 checksums.
-- Upstream download references and the required third-party notices.
-- No account files, private worlds, logs, local Java paths, native caches or private server settings.
+## Contents
 
-## Build tool
+- Minecraft 26.2; Fabric Loader 0.19.5; Java 25.
+- Public Omo Space v1.2.0 and 23 upstream mods, all pinned by file hashes.
+- Simple Voice Chat, graphics/performance mods and the Omo client dependencies.
+- No account files, private worlds, logs, host Java paths, native caches or server lists.
 
-Python 3.10 or newer is required. No third-party Python packages are used.
+The public `.mrpack` contains a download manifest, not third-party JARs. Prism fetches the pinned files from their official hosts. A binary-filled Prism ZIP is not provided because the upstream mods do not all permit re-hosting.
+
+## Import
+
+1. In a current Prism Launcher, select **Add Instance → Import** and choose the `.mrpack`.
+2. Create a **new instance**. Do not overwrite an existing pack.
+3. The Omo mod comes from its official GitHub release. Prism may warn about files outside Modrinth; inspect the source before trusting it.
+4. Use Java 25 and your own Minecraft account.
+
+Tested launcher: Prism 11.1.1 on Linux. macOS is not tested. The source manifest is `modrinth.index.json`; release checksums are generated in `dist/SHA256SUMS`.
+
+## Rebuild
+
+Python 3.10 or newer; no additional Python packages.
 
 ```sh
 python3 -m unittest discover -s scripts -p 'test_*.py' -v
-python3 scripts/build_release.py --lock modpack.lock.json --jars ./reviewed-jars --output ./dist/omo-modpack.zip
+python3 scripts/build_manifest.py --scope release-scope.json --cache ./reviewed-jars --output ./dist
 ```
 
-The release lock is intentionally not provided yet. Each entry must have an exact
-SHA-256, source and permission evidence, licence notices, and completed permission
-and privacy reviews. An unreviewed entry blocks the build. Files not named in the
-lock are never copied. The tool does not download or run mods.
+The builder fetches and verifies all 24 approved files and generates a deterministic `.mrpack`. Downloaded JARs remain in the local cache, outside the public archive. `build_release.py` is a separate, gated raw-ZIP tool; it is not used for this release format and requires its own reviewed redistribution lock.
 
-The generated ZIP is deterministic and verified by reopening every entry. A sibling
-`.sha256` file records its SHA-256. These are packaging checks, not a proof of
-launcher, dependency, operating-system, game-join or microphone compatibility.
+## Real verification
 
-## Release acceptance still required
+- All 24 official downloads fetched and checked.
+- Real Prism import completed. Every installed filename, size, SHA-1 and SHA-512 matches the manifest.
+- Real Linux client launched off-screen and loaded the mods.
+- Authenticated Omo World connection **failed** with a missing `fruitfly` registry.
+- Voice native codecs initialized, but peer microphone/audio was **not tested**. The test used dummy audio output.
+- macOS import/launch and in-world Omo terminal behaviour are **not verified**.
 
-1. Finish provenance, redistribution, nested-dependency and binary privacy review.
-2. Resolve each blocked mod without silently substituting a different mod set.
-3. Create the reviewed lock and build the actual release ZIP.
-4. Verify a clean Prism import and launch on Linux and macOS.
-5. Test an actual server join and voice audio separately.
-6. Review the exact final source revision and assets before public publication.
+## Deliberate omissions
 
-A working game server does not imply that an HTTP website exists at the same address.
-An answering game-status endpoint does not prove that an authenticated client can join.
+Agent Toast, Book Paste, Fruit Fly, GLaDOS, Omo Guide, Omo Voice (AI speech), Omo Teleporter and Twitch Chat are omitted from this approved preparation scope. Adding a compatibility mod requires a scope revision. The live server and original private pack are unchanged.
 
-## Updating and rollback
+## Update and rollback
 
-Import a published version into a separate instance. Keep the previous instance until
-the new version launches and joins correctly. Do not overwrite saves or account data.
+Import a new version into a separate instance and keep the old one until the new version passes testing. Do not copy accounts, private worlds, native caches or local service settings into shared archives.
 
-## Licensing
+## Rights
 
-Third-party mods retain their own licences. The pack's repository licence does not
-grant rights to those mods. A licence for the packaging code is not selected yet.
+Every upstream mod retains its own licence. An official download reference is not permission to re-host the file. Omo code comes from `omoresearch/omo-space` v1.2.0. A separate licence for the packaging scripts has not been selected. This project is not affiliated with Mojang or Microsoft.
