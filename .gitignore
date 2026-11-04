@@ -1,0 +1,5 @@
+dist/
+reviewed-jars/
+__pycache__/
+*.pyc
+.env
