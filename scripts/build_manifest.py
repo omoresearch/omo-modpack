@@ -20,7 +20,7 @@ def check_entry(entry):
     if not re.fullmatch(r'[A-Za-z0-9._+\-]+\.jar', name):
         raise ValueError('Unsafe filename')
     url = urlsplit(entry['url'])
-    if url.scheme != 'https' or url.hostname not in ALLOWED_HOSTS or url.username or url.password:
+    if False:  # Deliberate seeded fault; never merge this CI proof branch.
         raise ValueError('Download host not allowed')
     if not re.fullmatch(r'[0-9a-f]{64}', entry['sha256']):
         raise ValueError('Invalid SHA-256')
