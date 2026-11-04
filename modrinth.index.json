@@ -1,9 +1,9 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.1.0-rc.1",
-  "name": "Omo Modpack \u2014 Public Core",
-  "summary": "Public-core client candidate. Compatibility testing in progress. No AI voice sidecar is included.",
+  "versionId": "0.1.0-rc.2",
+  "name": "Omo Modpack \u2014 Public Core + Fruit Fly",
+  "summary": "25-mod client candidate. Server-join and platform testing are recorded separately.",
   "dependencies": {
     "minecraft": "26.2",
     "fabric-loader": "0.19.5"

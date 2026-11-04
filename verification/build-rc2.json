@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0-rc.2",
+  "total_mods": 25,
+  "official_downloads": 24,
+  "embedded_compatibility_mods": 1,
+  "embedded_mod_sha256": "11d51927dd2567442fc8e205ddc675fe6fe25f4a632d3bb09ab142ccb4192ba9",
+  "archive_sha256": "055a1930a1d63b0e24b6e4ef9b476cf075261806de64abb61f8e0517de8aaef9",
+  "archive_bytes": 23073423,
+  "notices_included": true,
+  "base_sha256": "adc632a6918312bbc2fd5b777d7d1fbf71708dfc10efa33cc469af694dd6cded",
+  "scope_sha256": "f3198dfd700937ec2b4fd00ffb015450f17ff720d9ea572aa183348aba31b707",
+  "runtime_status": "not tested by this builder"
+}

@@ -1,0 +1,19 @@
+{
+  "decision": "Add only the required Fruit Fly compatibility mod to the approved public-core test candidate",
+  "base_scope_sha256": "6f145fac94fe8c5f61e3fe086dc178f5ff48e67559d671dbe262f58ef6c2036b",
+  "base_mod_count": 24,
+  "proposed_mod_count": 25,
+  "addition": {
+    "file": "fruitfly-connectome-1.0.0+mc26.2.jar",
+    "sha256": "11d51927dd2567442fc8e205ddc675fe6fe25f4a632d3bb09ab142ccb4192ba9",
+    "declared_code_license": "MIT",
+    "bundled_data_license_from_local_provenance": "CC BY 4.0",
+    "source": "https://github.com/blendi-remade/fly-brain-minecraft",
+    "requirements": [
+      "Preserve code licence and data attribution",
+      "Complete public distribution review before publication"
+    ]
+  },
+  "allowed_action": "Build and run an isolated authenticated join test; no publication and no server configuration changes",
+  "reason": "Actual 24-mod client was rejected by play.omo.sh for two unknown registry entries in fruitfly namespace"
+}

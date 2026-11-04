@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0-rc.2",
+  "checked_at_utc": "2026-11-04T15:01:19.635511+00:00",
+  "archive_sha256": "055a1930a1d63b0e24b6e4ef9b476cf075261806de64abb61f8e0517de8aaef9",
+  "prism_version": "11.1.1",
+  "platform": "Linux x86_64",
+  "java_major": 25,
+  "real_prism_import_mod_count": 25,
+  "installed_hashes_verified": true,
+  "authenticated_server_join": true,
+  "server": "play.omo.sh:25565",
+  "proofs": {
+    "loaded_fruitfly": true,
+    "world_loaded": true,
+    "server_advancements_loaded": true,
+    "voice_authenticated": true,
+    "voice_connection_validated": true
+  },
+  "authentication_failures_before_success": 2,
+  "microphone_audio_verified": false,
+  "macos_verified": false,
+  "omo_terminal_behaviour_verified": false,
+  "live_server_configuration_changed": false,
+  "test_disconnected": true
+}

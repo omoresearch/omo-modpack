@@ -1,0 +1,20 @@
+name: Tests
+on:
+  push:
+    branches: [main, 'ci-proof/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    # Fork code must never run on this host. External PRs need separate review.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, ci-shared]
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # maintained v4 ref
+        with:
+          persist-credentials: false
+      - name: Packaging unit checks (not game or microphone E2E)
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
